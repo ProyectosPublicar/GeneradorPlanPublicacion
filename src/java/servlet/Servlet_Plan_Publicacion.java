@@ -194,7 +194,7 @@ public class Servlet_Plan_Publicacion extends HttpServlet {
                 String templateCode = templateCodeI.getValue();
 
                 //Verificacion de datos enviados de Salesforce
-                /*System.out.println("°°°°°°°°°°DATOS DE SALESFORCE°°°°°°°°°°");
+                System.out.println("°°°°°°°°°°DATOS DE SALESFORCE°°°°°°°°°°");
                 System.out.println("isSuccess-> " + resultadoParametrosBoolean);
                 System.out.println("templateCode-> " + templateCode);
                 System.out.println("clientInfo.getAddress()->  " + clientInfo.getAddress().getValue());
@@ -288,7 +288,7 @@ public class Servlet_Plan_Publicacion extends HttpServlet {
                             System.out.println("adLinInfo.getPrefixType()->  " + adLinInfo.getPrefixType());
                             System.out.println("adLinInfo.getReferenceCode()->  " + adLinInfo.getReferenceCode());
                             System.out.println("adLinInfo.getSecondname()->  " + adLinInfo.getSecondname());
-                            for (int l = 0; l < lsInfo.getAdditionalLines().get(k).getAssemblageList().size(); l++) {
+                            /*for (int l = 0; l < lsInfo.getAdditionalLines().get(k).getAssemblageList().size(); l++) {
                                 AssemblageInfo assemList = lsInfo.getAdditionalLines().get(k).getAssemblageList().get(l);
                                 System.out.println("°°°°°°°°°°AssemList°°°°°°°°°°");
                                 System.out.println("assemList.getCondensation()->  " + assemList.getCondensation());
@@ -300,7 +300,7 @@ public class Servlet_Plan_Publicacion extends HttpServlet {
                                 System.out.println("assemList.getRightmargin()->  " + assemList.getRightMargin());
                                 System.out.println("assemList.getSize()->  " + assemList.getSize());
                                 System.out.println("assemList.getText()->  " + assemList.getText());
-                            }
+                            }*/
                         }
                         lstLsInfo.add(lsInfo);
                     }
@@ -390,7 +390,7 @@ public class Servlet_Plan_Publicacion extends HttpServlet {
                 }
                 //System.out.println("-> " + );
                 System.out.println("°°°°°°°°°°-productList°°°°°°°°°°");
-                */
+                
                 //Si la respuesta obtenida en la variable isSucces es true se continua con el proceso
                 if (resultadoParametrosBoolean == true) {
 
