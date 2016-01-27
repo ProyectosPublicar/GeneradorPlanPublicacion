@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Web Services API : WSDesignBridge
+-->
+<definitions targetNamespace="http://soap.sforce.com/schemas/class/WSDesignBridge" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://soap.sforce.com/schemas/class/WSDesignBridge">
+ <types>
+  <xsd:schema elementFormDefault="qualified" targetNamespace="http://soap.sforce.com/schemas/class/WSDesignBridge">
+   <xsd:element name="DebuggingInfo">
+    <xsd:complexType>
+     <xsd:sequence>
+      <xsd:element name="debugLog" type="xsd:string"/>
+     </xsd:sequence>
+    </xsd:complexType>
+   </xsd:element>
+   <xsd:simpleType name="ID">
+    <xsd:restriction base="xsd:string">
+     <xsd:length value="18"/>
+     <xsd:pattern value="[a-zA-Z0-9]{18}"/>
+    </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="LogCategory">
+    <xsd:restriction base="xsd:string">
+     <xsd:enumeration value="Db"/>
+     <xsd:enumeration value="Workflow"/>
+     <xsd:enumeration value="Validation"/>
+     <xsd:enumeration value="Callout"/>
+     <xsd:enumeration value="Apex_code"/>
+     <xsd:enumeration value="Apex_profiling"/>
+     <xsd:enumeration value="Visualforce"/>
+     <xsd:enumeration value="System"/>
+     <xsd:enumeration value="All"/>
+    </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="LogCategoryLevel">
+    <xsd:restriction base="xsd:string">
+     <xsd:enumeration value="Internal"/>
+     <xsd:enumeration value="Finest"/>
+     <xsd:enumeration value="Finer"/>
+     <xsd:enumeration value="Fine"/>
+     <xsd:enumeration value="Debug"/>
+     <xsd:enumeration value="Info"/>
+     <xsd:enumeration value="Warn"/>
+     <xsd:enumeration value="Error"/>
+    </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:complexType name="LogInfo">
+    <xsd:sequence>
+     <xsd:element name="category" type="tns:LogCategory"/>
+     <xsd:element name="level" type="tns:LogCategoryLevel"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:simpleType name="LogType">
+    <xsd:restriction base="xsd:string">
+     <xsd:enumeration value="None"/>
+     <xsd:enumeration value="Debugonly"/>
+     <xsd:enumeration value="Db"/>
+     <xsd:enumeration value="Profiling"/>
+     <xsd:enumeration value="Callout"/>
+     <xsd:enumeration value="Detail"/>
+    </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="DebuggingHeader">
+    <xsd:complexType>
+     <xsd:sequence>
+      <xsd:element name="categories" minOccurs="0" maxOccurs="unbounded" type="tns:LogInfo"/>
+      <xsd:element name="debugLevel" type="tns:LogType"/>
+     </xsd:sequence>
+    </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="CallOptions">
+    <xsd:complexType>
+     <xsd:sequence>
+      <xsd:element name="client" type="xsd:string"/>
+     </xsd:sequence>
+    </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="SessionHeader">
+    <xsd:complexType>
+     <xsd:sequence>
+      <xsd:element name="sessionId" type="xsd:string"/>
+     </xsd:sequence>
+    </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="AllowFieldTruncationHeader">
+    <xsd:complexType>
+     <xsd:sequence>
+      <xsd:element name="allowFieldTruncation" type="xsd:boolean"/>
+     </xsd:sequence>
+    </xsd:complexType>
+   </xsd:element>
+   <xsd:complexType name="AdditionalLineInfo">
+    <xsd:sequence>
+     <xsd:element name="Address" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="AssemblageList" minOccurs="0" maxOccurs="unbounded" type="tns:AssemblageInfo" nillable="true"/>
+     <xsd:element name="Consecutive" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Firstname" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Indent" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Lastname1" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Lastname2" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Phone" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Prefix" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="PrefixType" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ReferenceCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Secondname" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="AdditionalSectionInfo">
+    <xsd:sequence>
+     <xsd:element name="SectionName" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="AdvertiseInfo">
+    <xsd:sequence>
+     <xsd:element name="Clasification" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ClientName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="FigurationCity" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="FigurationName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="HighQuality" minOccurs="0" type="xsd:boolean" nillable="true"/>
+     <xsd:element name="InsercionName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="NetValue" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductBarCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductEditionCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductEditionName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductPartCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductPartName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Purchase" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ReferenceCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ReferenceName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="SaleTypeDesignNumerRequest" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="SectionName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="SketchNumber" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="SketchType" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="AgentInfo">
+    <xsd:sequence>
+     <xsd:element name="AgentID" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="AgentName" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="AssemblageInfo">
+    <xsd:sequence>
+     <xsd:element name="Condensation" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Consecutive" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="FontCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Interline" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Justification" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="LeftMargin" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="RightMargin" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Size" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Text" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="BillingInfo">
+    <xsd:sequence>
+     <xsd:element name="Address" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Code" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="CurrencyIsoCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="NetValue" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="NIT" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="QuoteList" minOccurs="0" maxOccurs="unbounded" type="tns:QuoteInfo" nillable="true"/>
+     <xsd:element name="RazonSocial" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="TextValue" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="TypeBilling" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ClientInfo">
+    <xsd:sequence>
+     <xsd:element name="Address" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Authorizer1ID" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Authorizer1Name" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Authorizer1Phone" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Authorizer2ID" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Authorizer2Name" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Authorizer2Phone" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="City" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Email" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Fax" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="IdNumber" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="idType" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="LegalRepID" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="LegalRepName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Name" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="partyId" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Phone" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Web" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ContractInfo">
+    <xsd:sequence>
+     <xsd:element name="BillingAgent" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="BillingAgentID" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="BillList" minOccurs="0" maxOccurs="unbounded" type="tns:BillingInfo" nillable="true"/>
+     <xsd:element name="Consultor" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ConsultorID" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ContractBarCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ContractNumber" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="CurrencyIsoCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="DiscountValue" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="MovementType" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="NetValue" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="SaleDate" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="SaleValue" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Tax1Value" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Tax2Value" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="TextValue" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="TotalValue" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ErrorInfo">
+    <xsd:sequence>
+     <xsd:element name="code" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Description" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="InternetInfo">
+    <xsd:sequence>
+     <xsd:element name="AdditionalSections" minOccurs="0" maxOccurs="unbounded" type="tns:AdditionalSectionInfo" nillable="true"/>
+     <xsd:element name="CallFreePhone" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ClientName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="EndDate" minOccurs="0" type="xsd:date" nillable="true"/>
+     <xsd:element name="FigurationCity" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="FigurationName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="InsercionName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Label1" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Label2" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="MainSection" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="NetValue" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductBarCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductEditionCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductEditionName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductPartCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductPartName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ReferenceCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ReferenceName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Text1" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Text2" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="URL" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ListInfo">
+    <xsd:sequence>
+     <xsd:element name="AdditionalLines" minOccurs="0" maxOccurs="unbounded" type="tns:AdditionalLineInfo" nillable="true"/>
+     <xsd:element name="Clasification" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="FigurationCity" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="FigurationName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="InsercionName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="NetValue" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductBarCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductEditionCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductEditionName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductPartCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductPartName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Purchase" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ReferenceCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ReferenceName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ReferenceType" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="SaleRequest" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="SectionName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="showLogoInfo" minOccurs="0" type="xsd:boolean" nillable="true"/>
+     <xsd:element name="showSectionInfo" minOccurs="0" type="xsd:boolean" nillable="true"/>
+     <xsd:element name="SketchNumber" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ProductInfo">
+    <xsd:sequence>
+     <xsd:element name="AdvertiseType" minOccurs="0" maxOccurs="unbounded" type="tns:AdvertiseInfo" nillable="true"/>
+     <xsd:element name="InternetType" minOccurs="0" maxOccurs="unbounded" type="tns:InternetInfo" nillable="true"/>
+     <xsd:element name="ListType" minOccurs="0" maxOccurs="unbounded" type="tns:ListInfo" nillable="true"/>
+     <xsd:element name="ProductionType" minOccurs="0" maxOccurs="unbounded" type="tns:ProductionInfo" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ProductionInfo">
+    <xsd:sequence>
+     <xsd:element name="AdditionalLines" minOccurs="0" maxOccurs="unbounded" type="tns:AdditionalLineInfo" nillable="true"/>
+     <xsd:element name="Clasification" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="FigurationCity" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="FigurationName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="idPurchase" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="idSaleRequest" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="InsercionName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="NetValue" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductBarCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductEditionCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductEditionName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductPartCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ProductPartName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ReferenceCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ReferenceName" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="ReferenceType" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Section" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="showLogoInfo" minOccurs="0" type="xsd:boolean" nillable="true"/>
+     <xsd:element name="showSectionInfo" minOccurs="0" type="xsd:boolean" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="QuoteInfo">
+    <xsd:sequence>
+     <xsd:element name="BillingPhone" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="CurrencyIsoCode" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="DateBilling" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="NumberQuote" minOccurs="0" type="xsd:string" nillable="true"/>
+     <xsd:element name="Value" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="Response">
+    <xsd:sequence>
+     <xsd:element name="AdditionalInfo" minOccurs="0" maxOccurs="unbounded" type="xsd:string" nillable="true"/>
+     <xsd:element name="Agent" minOccurs="0" type="tns:AgentInfo" nillable="true"/>
+     <xsd:element name="ClientI" minOccurs="0" type="tns:ClientInfo" nillable="true"/>
+     <xsd:element name="ContractI" minOccurs="0" type="tns:ContractInfo" nillable="true"/>
+     <xsd:element name="ErrorList" minOccurs="0" maxOccurs="unbounded" type="tns:ErrorInfo" nillable="true"/>
+     <xsd:element name="isSuccess" minOccurs="0" type="xsd:boolean" nillable="true"/>
+     <xsd:element name="ProductList" minOccurs="0" maxOccurs="unbounded" type="tns:ProductInfo" nillable="true"/>
+     <xsd:element name="TemplateCode" minOccurs="0" type="xsd:string" nillable="true"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="getInformationProducts">
+    <xsd:complexType>
+     <xsd:sequence>
+      <xsd:element name="contractNumber" type="xsd:string" nillable="true"/>
+     </xsd:sequence>
+    </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="getInformationProductsResponse">
+    <xsd:complexType>
+     <xsd:sequence>
+      <xsd:element name="result" type="tns:Response" nillable="true"/>
+     </xsd:sequence>
+    </xsd:complexType>
+   </xsd:element>
+  </xsd:schema>
+ </types>
+ <!-- Message for the header parts -->
+ <message name="Header">
+  <part name="AllowFieldTruncationHeader" element="tns:AllowFieldTruncationHeader"/>
+  <part name="CallOptions" element="tns:CallOptions"/>
+  <part name="DebuggingHeader" element="tns:DebuggingHeader"/>
+  <part name="DebuggingInfo" element="tns:DebuggingInfo"/>
+  <part name="SessionHeader" element="tns:SessionHeader"/>
+ </message>
+ <!-- Operation Messages -->
+ <message name="getInformationProductsRequest">
+  <part element="tns:getInformationProducts" name="parameters"/>
+ </message>
+ <message name="getInformationProductsResponse">
+  <part element="tns:getInformationProductsResponse" name="parameters"/>
+ </message>
+ <portType name="WSDesignBridgePortType">
+  <operation name="getInformationProducts">
+   <input message="tns:getInformationProductsRequest"/>
+   <output message="tns:getInformationProductsResponse"/>
+  </operation>
+ </portType>
+ <binding name="WSDesignBridgeBinding" type="tns:WSDesignBridgePortType">
+  <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="getInformationProducts">
+   <soap:operation soapAction=""/>
+   <input>
+    <soap:header use="literal" part="SessionHeader" message="tns:Header"/>
+    <soap:header use="literal" part="CallOptions" message="tns:Header"/>
+    <soap:header use="literal" part="DebuggingHeader" message="tns:Header"/>
+    <soap:header use="literal" part="AllowFieldTruncationHeader" message="tns:Header"/>
+    <soap:body use="literal" parts="parameters"/>
+   </input>
+   <output>
+    <soap:header use="literal" part="DebuggingInfo" message="tns:Header"/>
+    <soap:body use="literal"/>
+   </output>
+  </operation>
+ </binding>
+ <service name="WSDesignBridgeService">
+  <documentation/>
+  <port binding="tns:WSDesignBridgeBinding" name="WSDesignBridge">
+   <soap:address location="https://cs3-api.salesforce.com/services/Soap/class/WSDesignBridge"/>
+  </port>
+ </service>
+</definitions>

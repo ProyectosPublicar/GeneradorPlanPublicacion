@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://publicar.com/production/services/1.3/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://publicar.com/production/services/1.3/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://publicar.com/production/services/1.3/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.datacontract.org/2004/07/Publicar.Genesis.Common.Dto" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://schemas.datacontract.org/2004/07/Publicar.Genesis.ServiceContracts.DataContracts.Internet" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s0="http://publicar.com/production/services/1.3/">
+            <s:element name="CreateDesignRequestInternet">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="designRequestInternet" nillable="true" type="s1:DesignRequestInternet" xmlns:q5="http://schemas.datacontract.org/2004/07/Publicar.Genesis.ServiceContracts.DataContracts.Internet"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="CreateDesignRequestInternetResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="CreateDesignRequestInternetResult" type="s:int"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="FinishInternetProduction">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="productId" nillable="true" type="s:string"/>
+                        <s:element minOccurs="0" name="companyId" nillable="true" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="FinishInternetProductionResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="FinishInternetProductionResult" type="s:int"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetBuiltReference">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="idCommercialReferenceRequest" type="s:long"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetBuiltReferenceResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="GetBuiltReferenceResult" nillable="true" type="s0:ArrayOfPrintedBuiltReference"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="ArrayOfPrintedBuiltReference">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="PrintedBuiltReference" nillable="true" type="s0:PrintedBuiltReference"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="PrintedBuiltReference">
+                <s:sequence>
+                    <s:element minOccurs="0" name="File" nillable="true" type="s:base64Binary"/>
+                    <s:element minOccurs="0" name="Name" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="Size" type="s:long"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="GetBuiltReferenceByLegacyCode">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="legacyCode" nillable="true" type="s:string"/>
+                        <s:element minOccurs="0" name="legacySystem" type="s:int"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetBuiltReferenceByLegacyCodeResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="GetBuiltReferenceByLegacyCodeResult" nillable="true" type="s0:ArrayOfPrintedBuiltReference"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetCommercialReferenceRequestIdByPrintedLegacyId">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="legacyOrigin" type="s:int"/>
+                        <s:element minOccurs="0" name="legacyCode" nillable="true" type="s2:LegacyCode" xmlns:q4="http://schemas.datacontract.org/2004/07/Publicar.Genesis.Common.Dto"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetCommercialReferenceRequestIdByPrintedLegacyIdResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="GetCommercialReferenceRequestIdByPrintedLegacyIdResult" type="s:decimal"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetFinalizedProposals">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="idCustomer" type="s:long"/>
+                        <s:element minOccurs="0" name="idCampaign" type="s:long"/>
+                        <s:element minOccurs="0" name="idProductInstance" type="s:long"/>
+                        <s:element minOccurs="0" name="referenceCode" nillable="true" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetFinalizedProposalsResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="GetFinalizedProposalsResult" nillable="true" type="s0:ArrayOfProposalInformation"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="ArrayOfProposalInformation">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="ProposalInformation" nillable="true" type="s0:ProposalInformation"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ProposalInformation">
+                <s:sequence>
+                    <s:element minOccurs="0" name="Bussinesline" type="s:int"/>
+                    <s:element minOccurs="0" name="CodeReference" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="EndDate" type="s:dateTime"/>
+                    <s:element minOccurs="0" name="Files" nillable="true" type="s0:ArrayOfPrintedBuiltReference"/>
+                    <s:element minOccurs="0" name="IdCampaign" type="s:int"/>
+                    <s:element minOccurs="0" name="IdCommercialReferenceRequest" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdProductInstance" type="s:int"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="GetFinalizedRequests">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="filter" nillable="true" type="s2:FinalizedRequestFilter" xmlns:q1="http://schemas.datacontract.org/2004/07/Publicar.Genesis.Common.Dto"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetFinalizedRequestsResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="GetFinalizedRequestsResult" nillable="true" type="s2:ArrayOfAdvertisementCode" xmlns:q2="http://schemas.datacontract.org/2004/07/Publicar.Genesis.Common.Dto"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetPreviewableBuiltReference">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="commercialReferenceId" type="s:int"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetPreviewableBuiltReferenceResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="GetPreviewableBuiltReferenceResult" nillable="true" type="s0:ArrayOfPrintedBuiltReference"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetPreviewableBuiltReferenceByLegacyCode">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="legacyCode" nillable="true" type="s:string"/>
+                        <s:element minOccurs="0" name="legacySystem" type="s:int"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetPreviewableBuiltReferenceByLegacyCodeResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="GetPreviewableBuiltReferenceByLegacyCodeResult" nillable="true" type="s0:ArrayOfPrintedBuiltReference"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetRequestInformation">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="requestId" type="s:long"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetRequestInformationResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="GetRequestInformationResult" nillable="true" type="s2:RequestInformation" xmlns:q3="http://schemas.datacontract.org/2004/07/Publicar.Genesis.Common.Dto"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="PrintedBatchProcessing">
+                <s:complexType>
+                    <s:sequence/>
+                </s:complexType>
+            </s:element>
+            <s:element name="PrintedBatchProcessingResponse">
+                <s:complexType>
+                    <s:sequence/>
+                </s:complexType>
+            </s:element>
+        </s:schema>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Publicar.Genesis.ServiceContracts.DataContracts.Internet" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.datacontract.org/2004/07/Publicar.Genesis.Common.Dto" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://schemas.datacontract.org/2004/07/Publicar.Genesis.ServiceContracts.DataContracts.Internet" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s0="http://publicar.com/production/services/1.3/">
+            <s:complexType name="DesignRequestInternet">
+                <s:sequence>
+                    <s:element minOccurs="0" name="Contrato" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="FechaReporteVenta" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdAsesor" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdCampana" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdEmpresa" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdEmpresaLegado" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdEscritorio" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdPais" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdSistemaLegado" type="s:int"/>
+                    <s:element minOccurs="0" name="OrigenModificacion" type="s:int"/>
+                    <s:element minOccurs="0" name="RazonSocial" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="ReferenciasComerciales" nillable="true" type="s1:ArrayOfCommercialReferenceRequestInternet"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ArrayOfCommercialReferenceRequestInternet">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="CommercialReferenceRequestInternet" nillable="true" type="s1:CommercialReferenceRequestInternet"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="CommercialReferenceRequestInternet">
+                <s:sequence>
+                    <s:element minOccurs="0" name="CodigoReferenciaComercial" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="Edicion" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdCategoria" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdDirectorio" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdLugar" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdSolRefComSistemaLegado" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="ListCode" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="ReferenciasProducto" nillable="true" type="s1:ArrayOfProductReferenceRequestInternet"/>
+                    <s:element minOccurs="0" name="TipoMovimiento" nillable="true" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ArrayOfProductReferenceRequestInternet">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="ProductReferenceRequestInternet" nillable="true" type="s1:ProductReferenceRequestInternet"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ProductReferenceRequestInternet">
+                <s:sequence>
+                    <s:element minOccurs="0" name="Animacion" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="CodigoReferenciaProducto" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="CuentasCorreo" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="DisenoExclusivo" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="Espejo" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="FotosAdicionales" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdDireccionamiento" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdIdioma" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="IdProducto" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="PaginasAdicionales" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="Peso" type="s:int"/>
+                    <s:element minOccurs="0" name="RequiereProduccion" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="SiteName" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="TipoMicrosite" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="Traduccion" nillable="true" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+        </s:schema>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Publicar.Genesis.Common.Dto" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.datacontract.org/2004/07/Publicar.Genesis.Common.Dto" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://schemas.datacontract.org/2004/07/Publicar.Genesis.ServiceContracts.DataContracts.Internet" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s0="http://publicar.com/production/services/1.3/">
+            <s:complexType name="LegacyCode">
+                <s:sequence>
+                    <s:element minOccurs="0" name="LegacyAdvertisementId" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="LegacyEdition" type="s:int"/>
+                    <s:element minOccurs="0" name="LegacyListId" nillable="true" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="FinalizedRequestFilter">
+                <s:sequence>
+                    <s:element minOccurs="0" name="Campaign" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="EndCode" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="EndDate" type="s:dateTime"/>
+                    <s:element minOccurs="0" name="Product" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="ProductPart" type="s:decimal"/>
+                    <s:element minOccurs="0" name="StartCode" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="StartDate" type="s:dateTime"/>
+                    <s:element minOccurs="0" name="Status" nillable="true" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ArrayOfAdvertisementCode">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="AdvertisementCode" nillable="true" type="s2:AdvertisementCode"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="AdvertisementCode">
+                <s:sequence>
+                    <s:element minOccurs="0" name="LegacyAdvertisementId" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="LegacyListId" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="ProductReferenceRequestId" nillable="true" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="RequestInformation">
+                <s:sequence>
+                    <s:element minOccurs="0" name="AdvisorId" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="ContractNumber" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="CustomerId" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="LegacyAdvertisementId" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="LegacyEdition" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="LegacyListId" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="ProductId" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="ReferenceCode" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="RemissionId" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="RequestCreationDate" type="s:dateTime"/>
+                    <s:element minOccurs="0" name="RequestStatus" nillable="true" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="CreateDesignRequestInternetSoapIn">
+        <wsdl:part name="CreateDesignRequestInternetRequestPart0" element="tns:CreateDesignRequestInternet"/>
+    </wsdl:message>
+    <wsdl:message name="CreateDesignRequestInternetSoapOut">
+        <wsdl:part name="CreateDesignRequestInternetResponseRequestPart0" element="tns:CreateDesignRequestInternetResponse"/>
+    </wsdl:message>
+    <wsdl:message name="FinishInternetProductionSoapIn">
+        <wsdl:part name="FinishInternetProductionRequestPart0" element="tns:FinishInternetProduction"/>
+    </wsdl:message>
+    <wsdl:message name="FinishInternetProductionSoapOut">
+        <wsdl:part name="FinishInternetProductionResponseRequestPart0" element="tns:FinishInternetProductionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetBuiltReferenceSoapIn">
+        <wsdl:part name="GetBuiltReferenceRequestPart0" element="tns:GetBuiltReference"/>
+    </wsdl:message>
+    <wsdl:message name="GetBuiltReferenceSoapOut">
+        <wsdl:part name="GetBuiltReferenceResponseRequestPart0" element="tns:GetBuiltReferenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetBuiltReferenceByLegacyCodeSoapIn">
+        <wsdl:part name="GetBuiltReferenceByLegacyCodeRequestPart0" element="tns:GetBuiltReferenceByLegacyCode"/>
+    </wsdl:message>
+    <wsdl:message name="GetBuiltReferenceByLegacyCodeSoapOut">
+        <wsdl:part name="GetBuiltReferenceByLegacyCodeResponseRequestPart0" element="tns:GetBuiltReferenceByLegacyCodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetCommercialReferenceRequestIdByPrintedLegacyIdSoapIn">
+        <wsdl:part name="GetCommercialReferenceRequestIdByPrintedLegacyIdRequestPart0" element="tns:GetCommercialReferenceRequestIdByPrintedLegacyId"/>
+    </wsdl:message>
+    <wsdl:message name="GetCommercialReferenceRequestIdByPrintedLegacyIdSoapOut">
+        <wsdl:part name="GetCommercialReferenceRequestIdByPrintedLegacyIdResponseRequestPart0" element="tns:GetCommercialReferenceRequestIdByPrintedLegacyIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetFinalizedProposalsSoapIn">
+        <wsdl:part name="GetFinalizedProposalsRequestPart0" element="tns:GetFinalizedProposals"/>
+    </wsdl:message>
+    <wsdl:message name="GetFinalizedProposalsSoapOut">
+        <wsdl:part name="GetFinalizedProposalsResponseRequestPart0" element="tns:GetFinalizedProposalsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetFinalizedRequestsSoapIn">
+        <wsdl:part name="GetFinalizedRequestsRequestPart0" element="tns:GetFinalizedRequests"/>
+    </wsdl:message>
+    <wsdl:message name="GetFinalizedRequestsSoapOut">
+        <wsdl:part name="GetFinalizedRequestsResponseRequestPart0" element="tns:GetFinalizedRequestsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetPreviewableBuiltReferenceSoapIn">
+        <wsdl:part name="GetPreviewableBuiltReferenceRequestPart0" element="tns:GetPreviewableBuiltReference"/>
+    </wsdl:message>
+    <wsdl:message name="GetPreviewableBuiltReferenceSoapOut">
+        <wsdl:part name="GetPreviewableBuiltReferenceResponseRequestPart0" element="tns:GetPreviewableBuiltReferenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetPreviewableBuiltReferenceByLegacyCodeSoapIn">
+        <wsdl:part name="GetPreviewableBuiltReferenceByLegacyCodeRequestPart0" element="tns:GetPreviewableBuiltReferenceByLegacyCode"/>
+    </wsdl:message>
+    <wsdl:message name="GetPreviewableBuiltReferenceByLegacyCodeSoapOut">
+        <wsdl:part name="GetPreviewableBuiltReferenceByLegacyCodeResponseRequestPart0" element="tns:GetPreviewableBuiltReferenceByLegacyCodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetRequestInformationSoapIn">
+        <wsdl:part name="GetRequestInformationRequestPart0" element="tns:GetRequestInformation"/>
+    </wsdl:message>
+    <wsdl:message name="GetRequestInformationSoapOut">
+        <wsdl:part name="GetRequestInformationResponseRequestPart0" element="tns:GetRequestInformationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="PrintedBatchProcessingSoapIn">
+        <wsdl:part name="PrintedBatchProcessingRequestPart0" element="tns:PrintedBatchProcessing"/>
+    </wsdl:message>
+    <wsdl:message name="PrintedBatchProcessingSoapOut">
+        <wsdl:part name="PrintedBatchProcessingResponseRequestPart0" element="tns:PrintedBatchProcessingResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="TemporaryDesignRequestService">
+        <wsdl:operation name="CreateDesignRequestInternet">
+            <wsdl:input message="tns:CreateDesignRequestInternetSoapIn"/>
+            <wsdl:output message="tns:CreateDesignRequestInternetSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="FinishInternetProduction">
+            <wsdl:input message="tns:FinishInternetProductionSoapIn"/>
+            <wsdl:output message="tns:FinishInternetProductionSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetBuiltReference">
+            <wsdl:input message="tns:GetBuiltReferenceSoapIn"/>
+            <wsdl:output message="tns:GetBuiltReferenceSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetBuiltReferenceByLegacyCode">
+            <wsdl:input message="tns:GetBuiltReferenceByLegacyCodeSoapIn"/>
+            <wsdl:output message="tns:GetBuiltReferenceByLegacyCodeSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCommercialReferenceRequestIdByPrintedLegacyId">
+            <wsdl:input message="tns:GetCommercialReferenceRequestIdByPrintedLegacyIdSoapIn"/>
+            <wsdl:output message="tns:GetCommercialReferenceRequestIdByPrintedLegacyIdSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetFinalizedProposals">
+            <wsdl:input message="tns:GetFinalizedProposalsSoapIn"/>
+            <wsdl:output message="tns:GetFinalizedProposalsSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetFinalizedRequests">
+            <wsdl:input message="tns:GetFinalizedRequestsSoapIn"/>
+            <wsdl:output message="tns:GetFinalizedRequestsSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetPreviewableBuiltReference">
+            <wsdl:input message="tns:GetPreviewableBuiltReferenceSoapIn"/>
+            <wsdl:output message="tns:GetPreviewableBuiltReferenceSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetPreviewableBuiltReferenceByLegacyCode">
+            <wsdl:input message="tns:GetPreviewableBuiltReferenceByLegacyCodeSoapIn"/>
+            <wsdl:output message="tns:GetPreviewableBuiltReferenceByLegacyCodeSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetRequestInformation">
+            <wsdl:input message="tns:GetRequestInformationSoapIn"/>
+            <wsdl:output message="tns:GetRequestInformationSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="PrintedBatchProcessing">
+            <wsdl:input message="tns:PrintedBatchProcessingSoapIn"/>
+            <wsdl:output message="tns:PrintedBatchProcessingSoapOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BasicHttpBinding_TemporaryDesignRequestService" type="tns:TemporaryDesignRequestService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="CreateDesignRequestInternet">
+            <soap:operation soapAction="http://publicar.com/production/services/1.3/ITemporaryDesignRequestService/CreateDesignRequestInternet" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="FinishInternetProduction">
+            <soap:operation soapAction="http://publicar.com/production/services/1.3/ITemporaryDesignRequestService/FinishInternetProduction" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetBuiltReference">
+            <soap:operation soapAction="http://publicar.com/production/services/1.3/ITemporaryDesignRequestService/GetBuiltReference" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetBuiltReferenceByLegacyCode">
+            <soap:operation soapAction="http://publicar.com/production/services/1.3/ITemporaryDesignRequestService/GetBuiltReferenceByLegacyCode" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCommercialReferenceRequestIdByPrintedLegacyId">
+            <soap:operation soapAction="http://publicar.com/production/services/1.3/ITemporaryDesignRequestService/GetCommercialReferenceRequestIdByPrintedLegacyId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetFinalizedProposals">
+            <soap:operation soapAction="http://publicar.com/production/services/1.3/ITemporaryDesignRequestService/GetFinalizedProposals" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetFinalizedRequests">
+            <soap:operation soapAction="http://publicar.com/production/services/1.3/ITemporaryDesignRequestService/GetFinalizedRequests" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPreviewableBuiltReference">
+            <soap:operation soapAction="http://publicar.com/production/services/1.3/ITemporaryDesignRequestService/GetPreviewableBuiltReference" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPreviewableBuiltReferenceByLegacyCode">
+            <soap:operation soapAction="http://publicar.com/production/services/1.3/ITemporaryDesignRequestService/GetPreviewableBuiltReferenceByLegacyCode" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetRequestInformation">
+            <soap:operation soapAction="http://publicar.com/production/services/1.3/ITemporaryDesignRequestService/GetRequestInformation" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="PrintedBatchProcessing">
+            <soap:operation soapAction="http://publicar.com/production/services/1.3/ITemporaryDesignRequestService/PrintedBatchProcessing" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TemporaryDesignRequestService">
+        <wsdl:port name="BasicHttpBinding_TemporaryDesignRequestService" binding="tns:BasicHttpBinding_TemporaryDesignRequestService">
+            <soap:address location="http://192.168.183.211/TemporaryDesignRequest/1.3/Publicar.Genesis.ServiceHost/1.3/TemporaryDesignRequestService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

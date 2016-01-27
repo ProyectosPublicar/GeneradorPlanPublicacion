@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="/WEB-INF/wsdl/WSDesignBridge.wsdl" uri="wsdl/WSDesignBridge.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/DigitizingService.wsdl" uri="wsdl/DigitizingService.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/Genesis.wsdl" uri="wsdl/Genesis.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/DiagrammingService.wsdl" uri="wsdl/DiagrammingService.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/Genesis2.wsdl" uri="wsdl/Genesis2.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/DigitizingServiceNuevo.wsdl" uri="wsdl/DigitizingServiceNuevo.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/WSDesignBridge.wsdl" uri="wsdl/WSDesignBridge.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/WSDesignBridge.wsdl" uri="wsdl/WSDesignBridge.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/WSDesignBridge.wsdl" uri="wsdl/WSDesignBridge.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/WSDesignBridge.wsdl" uri="wsdl/WSDesignBridge.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/WSDesignBridge.wsdl" uri="wsdl/WSDesignBridge.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/WSDesignBridge.wsdl" uri="wsdl/WSDesignBridge.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/publicar.services.DiagrammingService.wsdl" uri="wsdl/publicar.services.DiagrammingService.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/WSDesignBridge.wsdl" uri="wsdl/WSDesignBridge.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/WSDesignBridge.wsdl" uri="wsdl/WSDesignBridge.wsdl"/>
+    <system systemId="/WEB-INF/wsdl/WSDesignBridge.wsdl" uri="wsdl/WSDesignBridge.wsdl"/>
+</catalog>

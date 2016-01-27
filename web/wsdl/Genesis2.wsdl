@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://publicar.com/Production/Services/1.2/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://publicar.com/Production/Services/1.2/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://publicar.com/Production/Services/1.2" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s3="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s0="http://publicar.com/Production/Services/1.2" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://publicar.com/Production/Services/Types/1.2" xmlns:s2="http://publicar.com/production/services/1.2/">
+            <s:element name="GetCommercialReferenceRequestBylegacyId">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="legacyAdvertisementId" nillable="true" type="s:string"/>
+                        <s:element minOccurs="0" name="idProduct" type="s:int"/>
+                        <s:element minOccurs="0" name="highQuality" type="s:boolean"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetCommercialReferenceRequestBylegacyIdResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="GetCommercialReferenceRequestBylegacyIdResult" nillable="true" type="s1:CommercialReferenceRequest" xmlns:q3="http://publicar.com/Production/Services/Types/1.2"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetComRefRequestBylegacyIdAndProductInstance">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="legacyAdvertisementId" nillable="true" type="s:string"/>
+                        <s:element minOccurs="0" name="idProductInstance" type="s:int"/>
+                        <s:element minOccurs="0" name="highQuality" type="s:boolean"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetComRefRequestBylegacyIdAndProductInstanceResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="GetComRefRequestBylegacyIdAndProductInstanceResult" nillable="true" type="s1:CommercialReferenceRequest" xmlns:q4="http://publicar.com/Production/Services/Types/1.2"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+        </s:schema>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://publicar.com/Production/Services/Types/1.2" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s3="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s0="http://publicar.com/Production/Services/1.2" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://publicar.com/Production/Services/Types/1.2" xmlns:s2="http://publicar.com/production/services/1.2/">
+            <s:complexType name="CommercialReferenceRequest">
+                <s:sequence>
+                    <s:element minOccurs="0" name="CampaignId" type="s:int"/>
+                    <s:element minOccurs="0" name="Files" nillable="true" type="s2:ArrayOfPrintedBuiltReference" xmlns:q1="http://publicar.com/production/services/1.2/"/>
+                    <s:element minOccurs="0" name="Id" type="s:int"/>
+                    <s:element minOccurs="0" name="ProductInstance" type="s:int"/>
+                    <s:element minOccurs="0" name="Status" nillable="true" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="ServiceFaultGenesis" nillable="true" type="s1:ServiceFaultGenesis"/>
+            <s:complexType name="ServiceFaultGenesis">
+                <s:sequence>
+                    <s:element minOccurs="0" name="Id" type="s3:guid" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/"/>
+                    <s:element minOccurs="0" name="MessageText" nillable="true" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+        </s:schema>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://publicar.com/production/services/1.2/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s3="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s0="http://publicar.com/Production/Services/1.2" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://publicar.com/Production/Services/Types/1.2" xmlns:s2="http://publicar.com/production/services/1.2/">
+            <s:complexType name="ArrayOfPrintedBuiltReference">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="PrintedBuiltReference" nillable="true" type="s2:PrintedBuiltReference"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="PrintedBuiltReference">
+                <s:sequence>
+                    <s:element minOccurs="0" name="File" nillable="true" type="s:base64Binary"/>
+                    <s:element minOccurs="0" name="Name" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="Size" type="s:long"/>
+                </s:sequence>
+            </s:complexType>
+        </s:schema>
+        <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s3="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s0="http://publicar.com/Production/Services/1.2" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://publicar.com/Production/Services/Types/1.2" xmlns:s2="http://publicar.com/production/services/1.2/">
+            <s:simpleType name="guid">
+                <s:restriction base="s:string">
+                    <s:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+                </s:restriction>
+            </s:simpleType>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="GetCommercialReferenceRequestBylegacyIdSoapIn">
+        <wsdl:part name="GetCommercialReferenceRequestBylegacyIdRequestPart0" element="q1:GetCommercialReferenceRequestBylegacyId" xmlns:q1="http://publicar.com/Production/Services/1.2"/>
+    </wsdl:message>
+    <wsdl:message name="GetCommercialReferenceRequestBylegacyIdSoapOut">
+        <wsdl:part name="GetCommercialReferenceRequestBylegacyIdResponseRequestPart0" element="q2:GetCommercialReferenceRequestBylegacyIdResponse" xmlns:q2="http://publicar.com/Production/Services/1.2"/>
+    </wsdl:message>
+    <wsdl:message name="GetCommercialReferenceRequestBylegacyId_ServiceFaultGenesisFault_FaultMessage">
+        <wsdl:part name="detail" element="q3:ServiceFaultGenesis" xmlns:q3="http://publicar.com/Production/Services/Types/1.2"/>
+    </wsdl:message>
+    <wsdl:message name="GetComRefRequestBylegacyIdAndProductInstanceSoapIn">
+        <wsdl:part name="GetComRefRequestBylegacyIdAndProductInstanceRequestPart0" element="q4:GetComRefRequestBylegacyIdAndProductInstance" xmlns:q4="http://publicar.com/Production/Services/1.2"/>
+    </wsdl:message>
+    <wsdl:message name="GetComRefRequestBylegacyIdAndProductInstanceSoapOut">
+        <wsdl:part name="GetComRefRequestBylegacyIdAndProductInstanceResponseRequestPart0" element="q5:GetComRefRequestBylegacyIdAndProductInstanceResponse" xmlns:q5="http://publicar.com/Production/Services/1.2"/>
+    </wsdl:message>
+    <wsdl:message name="GetComRefRequestBylegacyIdAndProductInstance_ServiceFaultGenesisFault_FaultMessage">
+        <wsdl:part name="detail" element="q6:ServiceFaultGenesis" xmlns:q6="http://publicar.com/Production/Services/Types/1.2"/>
+    </wsdl:message>
+    <wsdl:portType name="GenesisService">
+        <wsdl:operation name="GetCommercialReferenceRequestBylegacyId">
+            <wsdl:input message="tns:GetCommercialReferenceRequestBylegacyIdSoapIn"/>
+            <wsdl:output message="tns:GetCommercialReferenceRequestBylegacyIdSoapOut"/>
+            <wsdl:fault wsaw:Action="http://publicar.com/Production/Services/1.2/IGenesisService/GetCommercialReferenceRequestBylegacyIdServiceFaultGenesisFault" name="ServiceFaultGenesisFault" message="tns:GetCommercialReferenceRequestBylegacyId_ServiceFaultGenesisFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetComRefRequestBylegacyIdAndProductInstance">
+            <wsdl:input message="tns:GetComRefRequestBylegacyIdAndProductInstanceSoapIn"/>
+            <wsdl:output message="tns:GetComRefRequestBylegacyIdAndProductInstanceSoapOut"/>
+            <wsdl:fault wsaw:Action="http://publicar.com/Production/Services/1.2/IGenesisService/GetComRefRequestBylegacyIdAndProductInstanceServiceFaultGenesisFault" name="ServiceFaultGenesisFault" message="tns:GetComRefRequestBylegacyIdAndProductInstance_ServiceFaultGenesisFault_FaultMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BasicHttpBinding_GenesisService" type="tns:GenesisService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetCommercialReferenceRequestBylegacyId">
+            <soap:operation soapAction="http://publicar.com/Production/Services/1.2/IGenesisService/GetCommercialReferenceRequestBylegacyId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceFaultGenesisFault">
+                <soap:fault use="literal" name="ServiceFaultGenesisFault" namespace=""/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="GetComRefRequestBylegacyIdAndProductInstance">
+            <soap:operation soapAction="http://publicar.com/Production/Services/1.2/IGenesisService/GetComRefRequestBylegacyIdAndProductInstance" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceFaultGenesisFault">
+                <soap:fault use="literal" name="ServiceFaultGenesisFault" namespace=""/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="GenesisService">
+        <wsdl:port name="BasicHttpBinding_GenesisService" binding="tns:BasicHttpBinding_GenesisService">
+            <soap:address location="http://192.168.183.211/production/services/1.2/publicar.services.GenesisService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

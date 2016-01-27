@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="mainclientconfig" 
+ >
+    <import location="WSDesignBridge.xml" namespace="http://soap.sforce.com/schemas/class/WSDesignBridge"/>
+    <import location="DigitizingService.xml" namespace="http://publicar.com/Production/Digitizing/Services/1.0/task"/>
+</definitions>

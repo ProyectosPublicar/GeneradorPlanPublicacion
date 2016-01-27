@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://publicar.com/Production/Digitizing/Services/1.0/task" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://publicar.com/Production/Digitizing/Services/1.0/task" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://publicar.com/Production/Digitizing/Services/1.0/task" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s0="http://publicar.com/Production/Digitizing/Services/1.0/task" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://schemas.datacontract.org/2004/07/Publicar.Production.Digitizing" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+            <s:element name="GetDataPdfBarCode">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="code" nillable="true" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetDataPdfBarCodeResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="GetDataPdfBarCodeResult" nillable="true" type="s1:BarCode" xmlns:q3="http://schemas.datacontract.org/2004/07/Publicar.Production.Digitizing"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetDataPngBarCode">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="CodBar" nillable="true" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetDataPngBarCodeResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="GetDataPngBarCodeResult" nillable="true" type="s1:BarCode" xmlns:q1="http://schemas.datacontract.org/2004/07/Publicar.Production.Digitizing"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+        </s:schema>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Publicar.Production.Digitizing" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s0="http://publicar.com/Production/Digitizing/Services/1.0/task" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://schemas.datacontract.org/2004/07/Publicar.Production.Digitizing" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+            <s:complexType name="BarCode">
+                <s:sequence>
+                    <s:element minOccurs="0" name="BarCodeString" nillable="true" type="s:string"/>
+                    <s:element minOccurs="0" name="ImageUrl" nillable="true" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="GetDataPdfBarCodeSoapIn">
+        <wsdl:part name="GetDataPdfBarCodeRequestPart0" element="tns:GetDataPdfBarCode"/>
+    </wsdl:message>
+    <wsdl:message name="GetDataPdfBarCodeSoapOut">
+        <wsdl:part name="GetDataPdfBarCodeResponseRequestPart0" element="tns:GetDataPdfBarCodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetDataPngBarCodeSoapIn">
+        <wsdl:part name="GetDataPngBarCodeRequestPart0" element="tns:GetDataPngBarCode"/>
+    </wsdl:message>
+    <wsdl:message name="GetDataPngBarCodeSoapOut">
+        <wsdl:part name="GetDataPngBarCodeResponseRequestPart0" element="tns:GetDataPngBarCodeResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ProductionDigitizingService">
+        <wsdl:operation name="GetDataPdfBarCode">
+            <wsdl:input message="tns:GetDataPdfBarCodeSoapIn"/>
+            <wsdl:output message="tns:GetDataPdfBarCodeSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetDataPngBarCode">
+            <wsdl:input message="tns:GetDataPngBarCodeSoapIn"/>
+            <wsdl:output message="tns:GetDataPngBarCodeSoapOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BasicHttpBinding_ProductionDigitizingService" type="tns:ProductionDigitizingService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetDataPdfBarCode">
+            <soap:operation soapAction="http://publicar.com/Production/Digitizing/Services/1.0/task/IProductionDigitizingService/GetDataPdfBarCode" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDataPngBarCode">
+            <soap:operation soapAction="http://publicar.com/Production/Digitizing/Services/1.0/task/IProductionDigitizingService/GetDataPngBarCode" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ProductionDigitizingService">
+        <wsdl:port name="BasicHttpBinding_ProductionDigitizingService" binding="tns:BasicHttpBinding_ProductionDigitizingService">
+            <soap:address location="http://192.168.183.213/production/digitizing/services/1.0/task/publicar.services.DigitizingService
+"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
