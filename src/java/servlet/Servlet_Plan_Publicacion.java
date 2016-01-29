@@ -74,6 +74,8 @@ import com.sun.codemodel.JOp;
 import static java.util.Collections.list;
 import parametros_plan_salesforce.AdditionalLineInfo;
 import parametros_plan_salesforce.AssemblageInfo;
+import parametros_plan_salesforce.BillingInfo;
+import parametros_plan_salesforce.QuoteInfo;
 
 /**
  * @author dlopez Servlet que se encarga del proceso de validación y de
@@ -220,8 +222,6 @@ public class Servlet_Plan_Publicacion extends HttpServlet {
                 System.out.println("clientInfo.getWeb()->  " + clientInfo.getWeb().getValue());
                 System.out.println("°°°°°°°°°°-ClientInfo°°°°°°°°°°");
                 System.out.println("°°°°°°°°°°ContractInfo°°°°°°°°°°");
-                System.out.println("contract.getBillList()->  " + contract.getBillList());
-                System.out.println("contract.getBillingAgent()->  " + contract.getBillingAgent().getValue());
                 System.out.println("contract.getBillingAgentID()->  " + contract.getBillingAgentID().getValue());
                 System.out.println("contract.getConsultor()->  " + contract.getConsultor().getValue());
                 System.out.println("contract.getConsultorID()->  " + contract.getConsultorID().getValue());
@@ -238,6 +238,29 @@ public class Servlet_Plan_Publicacion extends HttpServlet {
                 System.out.println("contract.getTextValue()->  " + contract.getTextValue().getValue());
                 System.out.println("contract.getTotalValue()->  " + contract.getTotalValue().getValue());
                 System.out.println("contract.getTypeBilling()->  " + contract.getTypeBilling().getValue());
+                System.out.println("contract.getBillList()->  " + contract.getBillList());
+                List<BillingInfo> lstBill = contract.getBillList();
+                for (int i = 0; i < lstBill.size(); i++) {
+                    BillingInfo billInf = lstBill.get(i);
+                    System.out.println("billInf.getAddress()-> " + billInf.getAddress().getValue());
+                    System.out.println("billInf.getCode()-> " + billInf.getCode().getValue());
+                    System.out.println("billInf.getCurrencyIsoCode()-> " + billInf.getCurrencyIsoCode().getValue());
+                    System.out.println("billInf.getNIT()-> " + billInf.getNIT().getValue());
+                    System.out.println("billInf.getNetValue()-> " + billInf.getNetValue().getValue());
+                    System.out.println("billInf.getRazonSocial()-> " + billInf.getRazonSocial().getValue());
+                    System.out.println("billInf.getTextValue()-> " + billInf.getTextValue().getValue());
+                    System.out.println("billInf.getTypeBilling()-> " + billInf.getTypeBilling().getValue());
+                    List<QuoteInfo> lstQuo = billInf.getQuoteList();
+                    for (int j = 0; j < lstQuo.size(); j++) {
+                        QuoteInfo quoInf = lstQuo.get(i);
+                        System.out.println("quoInf.getBillingPhone()-> " + quoInf.getBillingPhone().getValue());
+                        System.out.println("quoInf.getCurrencyIsoCode()-> " + quoInf.getCurrencyIsoCode().getValue());
+                        System.out.println("quoInf.getDateBilling()-> " + quoInf.getDateBilling().getValue());
+                        System.out.println("quoInf.getNie()-> " + quoInf.getNie().getValue());
+                        System.out.println("quoInf.getNumberQuote()-> " + quoInf.getNumberQuote().getValue());
+                        System.out.println("quoInf.getValue()-> " + quoInf.getValue().getValue());
+                    }
+                }
                 System.out.println("°°°°°°°°°°-ContractInfo°°°°°°°°°°");
                 System.out.println("°°°°°°°°°°AgentInfo°°°°°°°°°°");
                 System.out.println("agent.getAgentID()-> " + agent.getAgentID().getValue());
@@ -249,8 +272,9 @@ public class Servlet_Plan_Publicacion extends HttpServlet {
                 List<InternetInfo> lstIntInfo = null;
                 List<AdvertiseInfo> lstAdInfo = null;
                 List<ProductionInfo> lstProInfo = null;
-
-                /*for (int i = 0; i < prInf.size(); i++) {
+                System.out.println("prInf-> " + prInf.size());
+                for (int i = 0; i < prInf.size(); i++) {
+                    System.out.println("°°°°°°°°°°°PRIMER FOR°°°°°°°°°°°°°°°");
                     for (int j = 0; j < prInf.get(i).getListType().size(); j++) {
                         ListInfo lsInfo = prInf.get(i).getListType().get(j);
                         System.out.println("°°°°°°°°°°ListType°°°°°°°°°°");
@@ -277,7 +301,6 @@ public class Servlet_Plan_Publicacion extends HttpServlet {
                             System.out.println("adLinInfo.getConsecutive()-> " + adLinInfo.getConsecutive().getValue());
                             System.out.println("adLinInfo.getPrefixType()->  " + adLinInfo.getPrefixType().getValue());
                             System.out.println("adLinInfo.getAddress()->  " + adLinInfo.getAddress().getValue());
-                            System.out.println("adLinInfo.getAssemblageList()->  " + adLinInfo.getAssemblageList());
                             System.out.println("adLinInfo.getConsecutive()->  " + adLinInfo.getConsecutive().getValue());
                             System.out.println("adLinInfo.getFirstname()->  " + adLinInfo.getFirstname().getValue());
                             System.out.println("adLinInfo.getIndent()->  " + adLinInfo.getIndent().getValue());
@@ -302,8 +325,10 @@ public class Servlet_Plan_Publicacion extends HttpServlet {
                                 System.out.println("assemList.getText()->  " + assemList.getText());
                             }
                         }
-                        lstLsInfo.add(lsInfo);
+//                        lstLsInfo.add(lsInfo);
                     }
+                    System.out.println("°°°°°°°°°°°°°°°°°SEGUNDO FOR°°°°°°°°°°°°°°°°°");
+                    System.out.println("prInf.get(i).getInternetType().size()-> " + prInf.get(i).getInternetType().size());
                     for (int j = 0; j < prInf.get(i).getInternetType().size(); j++) {
                         InternetInfo intInfo = prInf.get(i).getInternetType().get(j);
                         System.out.println("intInfo.getAdditionalSections()->  " + intInfo.getAdditionalSections());
@@ -331,8 +356,10 @@ public class Servlet_Plan_Publicacion extends HttpServlet {
                         System.out.println("intInfo.getText1()->  " + intInfo.getText1().getValue());
                         System.out.println("intInfo.getText2()->  " + intInfo.getText2().getValue());
                         System.out.println("intInfo.getUrl()->  " + intInfo.getURL().getValue());
-                        lstIntInfo.add(intInfo);
+                        //lstIntInfo.add(intInfo);
                     }
+                    System.out.println("°°°°°°°°°°°°°°°°°TERCER FOR°°°°°°°°°°°°°°°°°");
+                    System.out.println("prInf.get(i).getAdvertiseType().size()-> " + prInf.get(i).getAdvertiseType().size());
                     for (int j = 0; j < prInf.get(i).getAdvertiseType().size(); j++) {
                         AdvertiseInfo adInfo = prInf.get(i).getAdvertiseType().get(j);
                         System.out.println("adInfo.getClasification()->  " + adInfo.getClasification().getValue());
@@ -358,8 +385,10 @@ public class Servlet_Plan_Publicacion extends HttpServlet {
                         System.out.println("adInfo.getSketchNumber()->  " + adInfo.getSketchNumber().getValue());
                         System.out.println("adInfo.getSketchType()->  " + adInfo.getSketchType().getValue());
                         System.out.println("adInfo.getSponsorSection()->  " + adInfo.getSponsorSection().getValue());
-                        lstAdInfo.add(adInfo);
+//                        lstAdInfo.add(adInfo);
                     }
+                    System.out.println("°°°°°°°°°°°°°°°°°CUARTO FOR°°°°°°°°°°°°°°°°°");
+                    System.out.println("prInf.get(i).getProductionType().size()-> " + prInf.get(i).getProductionType().size());
                     for (int j = 0; j < prInf.get(i).getProductionType().size(); j++) {
                         ProductionInfo proInfo = prInf.get(i).getProductionType().get(j);
                         System.out.println("proInfo.getAdditionalLines()->  " + proInfo.getAdditionalLines());
@@ -385,12 +414,12 @@ public class Servlet_Plan_Publicacion extends HttpServlet {
                         System.out.println("proInfo.getSection()->  " + proInfo.getSection().getValue());
                         System.out.println("proInfo.getShowLogoInfo()->  " + proInfo.getShowLogoInfo().getValue());
                         System.out.println("proInfo.getShowSectionInfo()->  " + proInfo.getShowSectionInfo().getValue());
-                        lstProInfo.add(proInfo);
+//                        lstProInfo.add(proInfo);
                     }
-                }*/
+                }
                 //System.out.println("-> " + );
                 System.out.println("°°°°°°°°°°-productList°°°°°°°°°°");
-                
+
                 //Si la respuesta obtenida en la variable isSucces es true se continua con el proceso
                 if (resultadoParametrosBoolean == true) {
 
